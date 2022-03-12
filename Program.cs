@@ -17,8 +17,9 @@ namespace Exercize
             Array[j] = rnd.Next();
           }
           sw.Start();
-          // BubbleSort(Array);
-          InsertionSort(Array);
+          BubbleSort(Array);
+          //  InsertionSort(Array);
+          // ShellSort(Array);
           sw.Stop();
           if(IsSorted(Array))
           {
@@ -51,6 +52,23 @@ namespace Exercize
           }
         }
 
+      }
+
+      static void ShellSort(int[] Array)
+      {
+        int Length = Array.Length;
+        for (int step = (Length / 2); step > 0; step /= 2)
+        {
+          for (int i = step; i < Length; i++)
+          {
+              for (int j = i - step; j >= 0 && Array[j] > Array[j + step] ; j -= step)
+              {
+                int x = Array[j];
+                Array[j] = Array[j + step];
+                Array[j + step] = x;
+              }
+          }
+        }
       }
 
       static void Insert(int[] Array, int From, int To)
