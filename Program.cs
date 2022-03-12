@@ -17,7 +17,8 @@ namespace Exercize
             Array[j] = rnd.Next();
           }
           sw.Start();
-          BubbleSort(Array);
+          // BubbleSort(Array);
+          InsertionSort(Array);
           sw.Stop();
           if(IsSorted(Array))
           {
@@ -33,6 +34,35 @@ namespace Exercize
         }
         // tester.RunTest(6);
       }
+      
+      static void InsertionSort(int[] Array)
+      {
+        int Length = Array.Length;
+        for(int i=1; i<Length; i++)
+        {
+          int Number = Array[i];
+          for(int j=0; j<i; j++)
+          {
+            if(Array[j] >= Number)
+            {
+              Insert(Array, i, j);
+              break;
+            }
+          }
+        }
+
+      }
+
+      static void Insert(int[] Array, int From, int To)
+      {
+        int Number = Array[From];
+        for(int i=From; i>To; i--)
+        {
+          Array[i] = Array[i-1];
+        }
+        Array[To] = Number;
+      }
+
       static bool IsSorted(int[] Array)
       {
         bool Result = true;
